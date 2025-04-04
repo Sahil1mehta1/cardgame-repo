@@ -5,14 +5,8 @@ public class Dealer {
 
     public Dealer() {
         deck = new ArrayList<>();
-        String[] suits = {"Hearts", "Diamonds", "Clubs", "Spades"};
-        String[] ranks = {
-                "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10",
-                "Jack", "Queen", "King"
-        };
-
-        for (String suit : suits) {
-            for (String rank : ranks) {
+        for (String suit : Card.getSuits()) {
+            for (String rank : Card.getRanks()) {
                 deck.add(new Card(rank, suit));
             }
         }
@@ -23,9 +17,7 @@ public class Dealer {
     }
 
     public Card pickCard() {
-        if (deck.isEmpty()) {
-            return null;
-        }
+        if (deck.isEmpty()) return null;
         return deck.remove(new Random().nextInt(deck.size()));
     }
 
